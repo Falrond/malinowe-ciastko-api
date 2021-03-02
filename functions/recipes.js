@@ -6,7 +6,6 @@ const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
   .table('recipes');
 
 exports.handler = async (event, context) => {
-  console.log(event);
   try {
     const { records } = await airtable.list();
     const recipes = records.map(recipe => {
@@ -16,6 +15,9 @@ exports.handler = async (event, context) => {
       return { id, name, url, trudnosc, wykonanie, ingredients };
     });
     return {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
       statusCode: 200,
       body: JSON.stringify(recipes),
     };
