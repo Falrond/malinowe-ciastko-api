@@ -7,7 +7,7 @@ const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
 
 exports.handler = async (event, context) => {
   try {
-    const { records } = await airtable.list();
+    const { records } = await airtable.list({ view: 'Grid view' });
     const recipes = records.map(recipe => {
       const { id } = recipe;
       const { name, images, time, Date } = recipe.fields;
