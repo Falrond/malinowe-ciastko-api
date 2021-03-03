@@ -10,9 +10,9 @@ exports.handler = async (event, context) => {
     const { records } = await airtable.list({ view: 'Grid view' });
     const recipes = records.map(recipe => {
       const { id } = recipe;
-      const { name, images, time, Date } = recipe.fields;
+      const { name, images, time, category, Date } = recipe.fields;
       const url = images[0].url;
-      return { id, name, url, time, Date };
+      return { id, name, url, time, category, Date };
     });
     return {
       headers: {
