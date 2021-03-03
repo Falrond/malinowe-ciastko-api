@@ -10,9 +10,9 @@ exports.handler = async (event, context) => {
     const { records } = await airtable.list();
     const recipes = records.map(recipe => {
       const { id } = recipe;
-      const { name, ingredients, wykonanie, images, trudnosc } = recipe.fields;
+      const { name, images, time } = recipe.fields;
       const url = images[0].url;
-      return { id, name, url, trudnosc, wykonanie, ingredients };
+      return { id, name, url, time };
     });
     return {
       headers: {
