@@ -3,8 +3,7 @@ const Airtable = require('airtable-node');
 
 const airtable = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
   .base('appeggUDHephog0p5')
-  .table('recipes')
-  .view('Airtable View');
+  .table('recipes');
 
 exports.handler = async (event, context) => {
   try {
