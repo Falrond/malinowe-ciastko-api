@@ -18,6 +18,7 @@ exports.handler = async (event, context) => {
         category,
         description,
         Date: date,
+        quantity,
         ingredients,
       } = data.fields;
       const url = images[0].url;
@@ -28,6 +29,7 @@ exports.handler = async (event, context) => {
         category,
         date,
         description,
+        quantity,
         ingredients,
       };
       if (recipe.error) {
