@@ -10,7 +10,6 @@ exports.handler = async (event, context) => {
   if (id) {
     try {
       const data = await airtable.retrieve(id);
-      console.log(data);
       const {
         name,
         images,
