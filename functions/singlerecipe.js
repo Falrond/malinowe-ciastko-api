@@ -9,7 +9,27 @@ exports.handler = async (event, context) => {
   const { id } = event.queryStringParameters;
   if (id) {
     try {
-      const recipe = await airtable.retrieve(id);
+      const data = await airtable.retrieve(id);
+      console.log(data);
+      const {
+        name,
+        images,
+        time,
+        category,
+        description,
+        Date: date,
+        ingredients,
+      } = data.fields;
+      const url = images[0].url;
+      const recipe = {
+        name,
+        time,
+        url,
+        category,
+        date,
+        description,
+        ingredients,
+      };
       if (recipe.error) {
         return {
           statusCode: 404,
